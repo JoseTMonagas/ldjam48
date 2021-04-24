@@ -6,31 +6,47 @@ export var ACCELERATION: int = 1200
 export var MAX_SPEED: int = 500
 
 var health: int = 100
-var speed: int = 0
+var speed: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2()
+
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
 		var bullet = Bullet.instance()
-		bullet.init(Vector2.DOWN, position + Vector2(0, 50))
+		bullet.init(Vector2.DOWN, position + Vector2(0, 100))
 		get_tree().root.add_child(bullet)
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("ui_right"):
-		speed += ACCELERATION * delta
-	elif Input.is_action_pressed("ui_left"):
-		speed -= ACCELERATION * delta
+	var mov_x: int = (int(Input.is_action_pressed("ui_right"))
+					- int(Input.is_action_pressed("ui_left")))
+	var mov_y: int = (int(Input.is_action_pressed("ui_down"))
+					- int(Input.is_action_pressed("ui_up")))
+	
+	if abs(mov_x) > 0:
+		speed.x += ACCELERATION * mov_x * delta
 	else:
-		speed = 0
+		speed.x = 0
 	
-	speed = clamp(speed, -MAX_SPEED, MAX_SPEED)
+	if abs(mov_y) > 0:
+		speed.y += ACCELERATION * mov_y * delta
+	else:
+		speed.y = 0
 	
-	velocity.x = speed
+	
+	speed = speed.clamped(MAX_SPEED)
+	
+	velocity = speed
 	
 	move_and_slide(velocity)
 
 
-func hit() -> void:
-	health -= 1
+func hit(damage: int = 1) -> void:
+	health -= damage
+	
+	animation_player.play("hit")
+	
+	if health <= 0:
+		queue_free()

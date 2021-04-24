@@ -16,4 +16,4 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.normal)
 		
 		if collision.collider.has_method("hit"):
-			collision.collider.hit()
+			collision.collider.hit(20)

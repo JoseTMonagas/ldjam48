@@ -12,13 +12,16 @@ enum Type {
 }
 
 export(Type) var BRICK_TYPE
+export var health: int = 100
+
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
 	assert(BRICK_TYPE != null)
 
 
-func hit() -> void:
+func hit(damage: int = 1) -> void:
 	match(BRICK_TYPE):
 		Type.BASE:
 			pass
@@ -29,19 +32,21 @@ func hit() -> void:
 		Type.CROSS_RAY:
 			_fire([Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT])
 	
-	emit_signal("yeeted")
-	queue_free()
+	health -= damage
+	
+	animation_player.play("hit")
+	
+	if health <= 0:
+		emit_signal("yeeted")
+		queue_free()
 
 
 func _spawn_bullet(direction: Vector2) -> void:
 	var bullet = Bullet.instance()
-	bullet.init(direction, position + direction * 50)
+	bullet.init(direction, position + direction * 100)
 	get_tree().root.add_child(bullet)
 
 
 func _fire(directions: Array) -> void:
 	for direction in directions:
 		_spawn_bullet(direction)
-	
-	emit_signal("yeeted")
-	queue_free()

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var ACCELERATION: int = 1200
+export var ACCELERATION: int = 800
 
 var velocity: Vector2 = Vector2()
 
@@ -14,4 +14,8 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
+		
+		if collision.collider.has_method("hit"):
+			collision.collider.hit()
+		
 		queue_free()
