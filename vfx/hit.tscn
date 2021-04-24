@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.966797, 0.185094, 0.0183801, 1, 0.99707, 0.704405, 0.0303292, 1 )
+
+[node name="Hit" type="CPUParticles2D"]
+emitting = false
+amount = 15
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2( 0, -0.5 )
+spread = 100.0
+gravity = Vector2( 0, 100 )
+initial_velocity = 250.0
+scale_amount = 6.0
+color_ramp = SubResource( 1 )
