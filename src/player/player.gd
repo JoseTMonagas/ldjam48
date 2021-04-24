@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const Bullet: PackedScene = preload("res://src/bullet/bullet.tscn")
 
+
 export var ACCELERATION: int = 1200
 export var MAX_SPEED: int = 500
 
