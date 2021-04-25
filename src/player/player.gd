@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died
+
 const Bullet: PackedScene = preload("res://src/bullet/bullet.tscn")
 
 
@@ -50,4 +52,5 @@ func hit(damage: int = 1) -> void:
 	animation_player.play("hit")
 	
 	if health <= 0:
+		emit_signal("died")
 		queue_free()
