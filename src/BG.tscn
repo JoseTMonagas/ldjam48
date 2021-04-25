@@ -30,5 +30,5 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 z_index = -5
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
