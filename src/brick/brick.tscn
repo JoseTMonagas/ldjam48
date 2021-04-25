@@ -1,55 +1,57 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/AlienThrust.png" type="Texture" id=1]
 [ext_resource path="res://src/brick/brick.gd" type="Script" id=2]
 [ext_resource path="res://vfx/hit.tres" type="Animation" id=3]
 [ext_resource path="res://assets/AlienShip.png" type="Texture" id=4]
+[ext_resource path="res://sfx/explosionCrunch_000.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sfx/spaceEngine_001.ogg" type="AudioStream" id=6]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 32, 32 )
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 6.0
-} ]
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
 } ]
 
 [node name="Brick" type="StaticBody2D"]
@@ -58,31 +60,39 @@ collision_mask = 22
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hit = ExtResource( 3 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="BodyPivot" type="Node2D" parent="."]
+
+[node name="Thrusters" type="Node2D" parent="BodyPivot"]
+position = Vector2( -3.96851, 18.7779 )
+
+[node name="Thrust1" type="AnimatedSprite" parent="BodyPivot/Thrusters"]
+position = Vector2( -5.91888, -16 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="Thrust2" type="AnimatedSprite" parent="BodyPivot/Thrusters"]
+position = Vector2( 16.0815, -16 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 6 )
+playing = true
+
+[node name="Sprite" type="AnimatedSprite" parent="BodyPivot"]
 position = Vector2( -9.53674e-07, 9.53674e-07 )
 scale = Vector2( 2, 2 )
 z_index = 1
-frames = SubResource( 4 )
-playing = true
-
-[node name="Thrusters" type="Node2D" parent="."]
-position = Vector2( -3.96851, 18.7779 )
-
-[node name="Thrust1" type="AnimatedSprite" parent="Thrusters"]
-position = Vector2( -5.91888, -16 )
-scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 2
+frame = 1
 playing = true
 
-[node name="Thrust2" type="AnimatedSprite" parent="Thrusters"]
-position = Vector2( 16.0815, -16 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 10 )
-frame = 2
-playing = true
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="ThrustSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+autoplay = true

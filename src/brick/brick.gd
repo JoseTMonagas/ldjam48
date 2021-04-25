@@ -34,6 +34,8 @@ func hit(damage: int = 1) -> void:
 	
 	health -= damage
 	
+	$HurtSFX.play()
+	
 	animation_player.play("hit")
 	
 	if health <= 0:

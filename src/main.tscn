@@ -23,6 +23,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 513, 300 ), Vector2( 512, 124 ), Vector2( 512, 124 ), Vector2( 513, 300 ) ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_move_background"
+} ]
+}
 
 [node name="Main" type="Node"]
 script = ExtResource( 7 )
@@ -32,7 +46,7 @@ position = Vector2( 513, 300 )
 current = true
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 1, -65523, 0, 1, -65522, 0, 1, -65521, 0, 1, 0, 0, 65536, 15, 0, 65537, 65536, 0, 65536, 65551, 0, 65537, 131072, 0, 65536, 131087, 0, 65537, 196608, 0, 65536, 196623, 0, 65537, 262144, 0, 65536, 262159, 0, 65537, 327680, 0, 65536, 327695, 0, 65537, 393216, 0, 65536, 393231, 0, 65537, 458752, 0, 65536, 458767, 0, 65537, 524288, 0, 65536, 524303, 0, 65537, 589824, 0, 65536, 589839, 0, 65537, 655360, 0, 65536, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0 )
+tile_data = PoolIntArray( -262144, 0, 2, -262143, 0, 1, -262142, 0, 1, -262141, 0, 1, -262140, 0, 1, -262139, 0, 1, -262138, 0, 1, -262137, 0, 1, -262136, 0, 1, -262135, 0, 1, -262134, 0, 1, -262133, 0, 1, -262132, 0, 1, -262131, 0, 1, -262130, 0, 1, -262129, 0, 3, -196608, 0, 65536, -196593, 0, 65537, -131072, 0, 65536, -131057, 0, 65537, -65536, 0, 65536, -65521, 0, 65537, 0, 0, 65536, 15, 0, 65537, 65536, 0, 65536, 65551, 0, 65537, 131072, 0, 65536, 131087, 0, 65537, 196608, 0, 65536, 196623, 0, 65537, 262144, 0, 65536, 262159, 0, 65537, 327680, 0, 65536, 327695, 0, 65537, 393216, 0, 65536, 393231, 0, 65537, 458752, 0, 65536, 458767, 0, 65537, 524288, 0, 65536, 524303, 0, 65537, 589824, 0, 65536, 589839, 0, 65537, 655360, 0, 65538, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 65539 )
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512, 288 )
@@ -89,15 +103,56 @@ BRICK_TYPE = 3
 position = Vector2( 704, 512 )
 BRICK_TYPE = 3
 
-[node name="BG" parent="." instance=ExtResource( 5 )]
-position = Vector2( 512, 300 )
-
-[node name="BG2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 512, 900 )
-rotation = 3.14159
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/cleared = SubResource( 1 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BG" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 300 )
+
+[node name="BG2" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 900 )
+rotation = -3.14159
+
+[node name="BG3" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, -252 )
+rotation = -3.14159
+
+[node name="BG4" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 2044 )
+
+[node name="BG5" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 2644 )
+rotation = -3.14159
+
+[node name="BG6" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 1492 )
+rotation = -3.14159
+
+[node name="BG7" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 3732 )
+
+[node name="BG8" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 4332 )
+rotation = -3.14159
+
+[node name="BG9" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 3180 )
+rotation = -3.14159
+
+[node name="BG10" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 5412 )
+
+[node name="BG11" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 6012 )
+rotation = -3.14159
+
+[node name="BG12" parent="Background" instance=ExtResource( 5 )]
+position = Vector2( 512, 4860 )
+rotation = -3.14159
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="died" from="Player" to="." method="_on_Player_died"]
 [connection signal="cleared" from="Group" to="." method="_on_Group_cleared"]
 [connection signal="cleared" from="Group2" to="." method="_on_Group_cleared"]

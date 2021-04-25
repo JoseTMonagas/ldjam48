@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	
 	if collision:
+		$BounceSFX.play()
 		velocity = velocity.bounce(collision.normal)
 		
 		if collision.collider.has_method("hit"):

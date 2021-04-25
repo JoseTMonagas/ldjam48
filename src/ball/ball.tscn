@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/ball.png" type="Texture" id=1]
 [ext_resource path="res://src/ball/ball.gd" type="Script" id=2]
+[ext_resource path="res://sfx/spaceEngine_000.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sfx/forceField_000.ogg" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -38,8 +40,14 @@ acceleration = 500
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
+
+[node name="BaseSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="BounceSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

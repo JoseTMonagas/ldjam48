@@ -13,6 +13,7 @@ var speed: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2()
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
 
 
 func _unhandled_input(event: InputEvent):
@@ -50,6 +51,7 @@ func hit(damage: int = 1) -> void:
 	health -= damage
 	
 	animation_player.play("hit")
+	hurt_sfx.play()
 	
 	if health <= 0:
 		emit_signal("died")
