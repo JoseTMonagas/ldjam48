@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ld48"
+config/name="ldj48"
 run/main_scene="res://src/main.tscn"
 config/icon="res://icon.png"
 
