@@ -24,3 +24,7 @@ func _on_Group_cleared():
 	ball.set_physics_process(true)
 	player.set_physics_process(true)
 	
+
+
+func _on_Player_died():
+	pass # Replace with function body.
