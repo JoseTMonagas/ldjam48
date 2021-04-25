@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Thrust.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 10 )
+extents = Vector2( 16, 24 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
@@ -48,6 +48,7 @@ MAX_SPEED = 900
 anims/hit = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+rotation = 3.14159
 scale = Vector2( 1.75, 1.75 )
 z_index = 1
 texture = ExtResource( 1 )
@@ -58,9 +59,10 @@ shape = SubResource( 1 )
 [node name="Hit" parent="." instance=ExtResource( 4 )]
 
 [node name="Thrust" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 32 )
+position = Vector2( 0, -40 )
+rotation = 3.14159
 scale = Vector2( 1.5, 1.625 )
 frames = SubResource( 7 )
 animation = "Normal"
-frame = 4
+frame = 2
 playing = true
