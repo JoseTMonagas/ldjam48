@@ -2,7 +2,7 @@ extends StaticBody2D
 
 signal yeeted
 
-const Bullet: PackedScene = preload("res://src/bullet/bullet.tscn")
+const Bullet: PackedScene = preload("res://src/bullet/Alienbullet.tscn")
 
 enum Type {
 	BASE,

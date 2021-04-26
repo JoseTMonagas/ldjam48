@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal died
+signal update_hp(hp)
 
 const Bullet: PackedScene = preload("res://src/bullet/bullet.tscn")
 
@@ -53,6 +54,9 @@ func hit(damage: int = 1) -> void:
 	animation_player.play("hit")
 	hurt_sfx.play()
 	
+	emit_signal("update_hp", health)
+	
 	if health <= 0:
 		emit_signal("died")
 		queue_free()
+
