@@ -74,14 +74,12 @@ position = Vector2( -3.96851, 18.7779 )
 position = Vector2( -5.91888, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 3
 playing = true
 
 [node name="Thrust2" type="AnimatedSprite" parent="BodyPivot/Thrusters"]
 position = Vector2( 16.0815, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 3
 playing = true
 
 [node name="Sprite" type="AnimatedSprite" parent="BodyPivot"]
@@ -89,7 +87,6 @@ position = Vector2( -9.53674e-07, 9.53674e-07 )
 scale = Vector2( 2, 2 )
 z_index = 1
 frames = SubResource( 10 )
-frame = 2
 playing = true
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
