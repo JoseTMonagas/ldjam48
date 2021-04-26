@@ -17,6 +17,7 @@ export var health: int = 100
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+
 func _ready() -> void:
 	assert(BRICK_TYPE != null)
 
