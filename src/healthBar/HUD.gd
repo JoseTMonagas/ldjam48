@@ -5,5 +5,4 @@ onready var hp: TextureProgress = $MarginContainer/VBoxContainer/HBoxContainer/H
 
 
 func get_hp(health):
-	print("get hp is being executed")
 	hp.value=health

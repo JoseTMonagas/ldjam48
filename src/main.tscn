@@ -104,6 +104,118 @@ BRICK_TYPE = 3
 position = Vector2( 704, 512 )
 BRICK_TYPE = 3
 
+[node name="Group4" type="Node2D" parent="." groups=[
+"Stages",
+]]
+position = Vector2( 2756, 0 )
+script = ExtResource( 6 )
+
+[node name="Brick5" parent="Group4" instance=ExtResource( 4 )]
+position = Vector2( 320, 512 )
+BRICK_TYPE = 1
+
+[node name="Brick6" parent="Group4" instance=ExtResource( 4 )]
+position = Vector2( 448, 384 )
+BRICK_TYPE = 3
+
+[node name="Brick7" parent="Group4" instance=ExtResource( 4 )]
+position = Vector2( 704, 512 )
+BRICK_TYPE = 1
+
+[node name="Brick8" parent="Group4" instance=ExtResource( 4 )]
+position = Vector2( 576, 384 )
+BRICK_TYPE = 3
+
+[node name="Group5" type="Node2D" parent="." groups=[
+"Stages",
+]]
+position = Vector2( 3716, 0 )
+script = ExtResource( 6 )
+
+[node name="Brick5" parent="Group5" instance=ExtResource( 4 )]
+position = Vector2( 320, 512 )
+BRICK_TYPE = 2
+
+[node name="Brick6" parent="Group5" instance=ExtResource( 4 )]
+position = Vector2( 448, 384 )
+BRICK_TYPE = 1
+
+[node name="Brick7" parent="Group5" instance=ExtResource( 4 )]
+position = Vector2( 704, 512 )
+BRICK_TYPE = 1
+
+[node name="Brick8" parent="Group5" instance=ExtResource( 4 )]
+position = Vector2( 576, 384 )
+BRICK_TYPE = 3
+
+[node name="Group6" type="Node2D" parent="." groups=[
+"Stages",
+]]
+position = Vector2( 4620, 0 )
+script = ExtResource( 6 )
+
+[node name="Brick5" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 448, 512 )
+BRICK_TYPE = 2
+
+[node name="Brick9" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 312, 512 )
+BRICK_TYPE = 1
+
+[node name="Brick6" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 448, 384 )
+BRICK_TYPE = 1
+
+[node name="Brick7" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 700, 512 )
+BRICK_TYPE = 1
+
+[node name="Brick8" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 576, 384 )
+BRICK_TYPE = 3
+
+[node name="Brick10" parent="Group6" instance=ExtResource( 4 )]
+position = Vector2( 700, 384 )
+BRICK_TYPE = 2
+
+[node name="Group7" type="Node2D" parent="." groups=[
+"Stages",
+]]
+position = Vector2( 5380, 0 )
+script = ExtResource( 6 )
+
+[node name="Brick5" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 448, 512 )
+BRICK_TYPE = 2
+
+[node name="Brick11" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 576, 512 )
+BRICK_TYPE = 3
+
+[node name="Brick9" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 312, 512 )
+BRICK_TYPE = 3
+
+[node name="Brick6" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 448, 384 )
+BRICK_TYPE = 1
+
+[node name="Brick7" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 700, 512 )
+BRICK_TYPE = 3
+
+[node name="Brick8" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 572, 384 )
+BRICK_TYPE = 3
+
+[node name="Brick12" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 312, 384 )
+BRICK_TYPE = 3
+
+[node name="Brick10" parent="Group7" instance=ExtResource( 4 )]
+position = Vector2( 700, 384 )
+BRICK_TYPE = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/cleared = SubResource( 1 )
 
@@ -160,3 +272,7 @@ rotation = -3.14159
 [connection signal="cleared" from="Group" to="." method="_on_Group_cleared"]
 [connection signal="cleared" from="Group2" to="." method="_on_Group_cleared"]
 [connection signal="cleared" from="Group3" to="." method="_on_Group_cleared"]
+[connection signal="cleared" from="Group4" to="." method="_on_Group_cleared"]
+[connection signal="cleared" from="Group5" to="." method="_on_Group_cleared"]
+[connection signal="cleared" from="Group6" to="." method="_on_Group_cleared"]
+[connection signal="cleared" from="Group7" to="." method="_on_Group_cleared"]

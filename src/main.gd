@@ -9,7 +9,6 @@ onready var tween: Tween = $Tween
 onready var HUD: Control = $HUD
 
 
-
 func _ready():
 	player.connect("update_hp", self, "on_update_hp")
 
@@ -40,16 +39,17 @@ func _on_Group_cleared():
 	yield(animation_player, "animation_finished")
 	var stages = get_tree().get_nodes_in_group("Stages")
 	stages[0].position.x = 0
+	player.hp = 100
+	player.emit_signal("update_hp")
 	
 	ball.set_physics_process(true)
 	player.set_physics_process(true)
 
 
 func _on_Player_died():
-	pass # Replace with function body.
+	get_tree().change_scene("res://src/gameover/gameover.tscn")
 
 
 func on_update_hp(health):
-	print("hp on main is: ", health)
 	health = player.health
 	HUD.get_hp(health)
